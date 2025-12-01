@@ -1,0 +1,14 @@
+# IntelliJ
+.idea/
+*.iml
+out/
+
+# Maven / Gradle
+target/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+.gradle/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Додај или уреди книга</title>
+</head>
+<body>
+<form method="post" th:action="@{${book == null ? '/books' : '/books/' + book.id}}">
+
+
+<div class="form-group">
+    <label for="title">Book title</label>
+    <input type="text"
+           class="form-control"
+           id="title"
+           name="title"
+           th:value="${book != null ? book.getTitle() : ''}"
+           required
+           placeholder="Enter book title">
+</div>
+<div class="form-group">
+    <label for="genre">Book genre</label>
+    <input type="text"
+           class="form-control"
+           id="genre"
+           name="genre"
+           th:value="${book != null ? book.getGenre() : ''}"
+           required
+           placeholder="Enter book genre">
+</div>
+<div class="form-group">
+    <label for="averageRating">Average rating</label>
+    <input type="text"
+           class="form-control"
+           id="averageRating"
+           name="averageRating"
+           th:value="${book != null ? book.getAverageRating() : ''}"
+           required
+           placeholder="Enter book rating">
+</div>
+<div class="form-group">
+    <label>Author</label>
+    <select name="authorId" class="form-control">
+        <option
+                th:each="a : ${authors}"
+                th:text="|${a.getName()} ${a.getSurname()}|"
+                th:value="${a.id}"
+                th:selected="${book != null && book.author != null && book.author == a}"
+        ></option>
+    </select>
+</div>
+    <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+    <a type="button" class="btn btn-primary" href="/books">Back</a>
+
+</form>
+
+</body>
+</html>
